@@ -16,9 +16,9 @@ jobs:
       - name: run the cowsay
         run: cowsay -f dragon "run the cover, I am DRAGON" >> dragon.txt
 
-        name: list the file 
+      - name: list the file 
         run: cat dragon.txt
-        
+
       - name: Install Tools
         run: |
           sudo apt-get update
