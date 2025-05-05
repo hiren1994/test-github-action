@@ -17,11 +17,11 @@ jobs:
         run: cowsay -f dragon "run the cover, I am DRAGON" >> dragon.txt
 
       - uses: actions/upload-artifact@v4
-        run: | 
-              mkdir /home/download
-              chmod - R /home/download
         with:
           name: my artifact
+          run: | 
+              mkdir /home/download
+              chmod - R /home/download
           path: /home/download
 
       - name: show artifact file 
