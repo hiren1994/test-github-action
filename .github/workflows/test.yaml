@@ -16,38 +16,38 @@ jobs:
       - name: run the cowsay
         run: cowsay -f dragon "run the cover, I am DRAGON" >> dragon.txt
 
-      - uses: actions/upload-artifact@v4
+      - name: upload the artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: my artifact
-          run: | 
-              mkdir /home download
-              chmod - R /home download
-          path: /home/download
+          name: my-file
+          path: dragon.txt
 
       - name: show artifact file 
         run: |
-            cd /home
             pwd
             ls -lart 
 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
 
-      - name: sleep 
-        run: sleep 30
-
-  # test:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-
-  #     - name: Install Tools
-  #       run: |
-  #         grep - i "dragon" dragon.txt
-  #         sudo apt-get install -y sshpass jq
+      - name: download the artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-file
 
 
-  #     - name: list the file 
-  #       run: cat dragon.txt
+      - name: show artifact file 
+        run: |
+            pwd
+            ls -lart
+            
 
 
-  #     - name: Say Hello
-  #       run: echo "🚀 Basic GitHub Action is running!"
+      - name: list the file 
+        run: cat dragon.txt
+
+
+      - name: Say Hello
+        run: echo "🚀 Basic GitHub Action is running!"
