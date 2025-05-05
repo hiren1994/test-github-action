@@ -30,8 +30,8 @@ jobs:
   test:
     needs: build
     concurrency:
-    group: build  
-    cancel-in-progress: true  # Cancel any in-progress runs if a new push is made to the branch
+      group: build  
+      cancel-in-progress: true  # Cancel any in-progress runs if a new push is made to the branch
 
     runs-on: ubuntu-latest
     
