@@ -29,7 +29,12 @@ jobs:
 
   test:
     needs: build
+    concurrency:
+    group: build  
+    cancel-in-progress: true  # Cancel any in-progress runs if a new push is made to the branch
+
     runs-on: ubuntu-latest
+    
     steps:
 
       - name: download the artifact
@@ -37,6 +42,8 @@ jobs:
         with:
           name: my-file
 
+      - name: sleep 
+        run: sleep 360
 
       - name: show artifact file 
         run: |
