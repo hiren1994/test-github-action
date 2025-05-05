@@ -57,4 +57,4 @@ jobs:
 
 
       - name: Say Hello
-        run: echo "🚀 Basic GitHub Action is running!"
+        run: echo "🚀 Basic GitHub Action is running!.."
