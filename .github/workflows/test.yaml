@@ -3,13 +3,22 @@ name: Basic Deploy
 on: [push]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
+      - name: install cowsay
+        run: sudo apt-get install cowsay - y
+
+      - name: run the cowsay
+        run: cowsay -f dragon "run the cover, I am DRAGON" >> dragon.txt
+
+        name: list the file 
+        run: cat dragon.txt
+        
       - name: Install Tools
         run: |
           sudo apt-get update
