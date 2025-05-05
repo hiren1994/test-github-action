@@ -16,13 +16,24 @@ jobs:
       - name: run the cowsay
         run: cowsay -f dragon "run the cover, I am DRAGON" >> dragon.txt
 
-      - name: list the file 
-        run: cat dragon.txt
+
+      - name: sleep 
+        run: sleep 30
+
+    test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
 
       - name: Install Tools
         run: |
-          sudo apt-get update
+          grep - i "dragon" dragon.txt
           sudo apt-get install -y sshpass jq
+
+
+      - name: list the file 
+        run: cat dragon.txt
+
 
       - name: Say Hello
         run: echo "🚀 Basic GitHub Action is running!"
