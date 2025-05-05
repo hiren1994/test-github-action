@@ -20,8 +20,8 @@ jobs:
         with:
           name: my artifact
           run: | 
-              mkdir /home/download
-              chmod - R /home/download
+              mkdir /home download
+              chmod - R /home download
           path: /home/download
 
       - name: show artifact file 
